@@ -7,7 +7,7 @@ const Navbar = () => {
     <div>
       <nav className="navbar navbar-dark bg-secondary p-4">
         <form className="form-inline">
-          <Link className="btn btn-outline-light" type="button" to="/portal">
+          <Link className="btn btn-outline-light" type="button" to="/">
             HOME
           </Link>
           <Link
