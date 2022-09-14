@@ -5,10 +5,29 @@ import React, { useEffect, useState } from "react";
 
 const Portal = () => {
   const [spinner, setSpinner] = useState(true);
+  const [count, setCount] = useState(0);
   const [active, setActive] = useState([]);
+
+  let userDelete = async (id) => {
+    try {
+      await axios.delete(`/student/${id}`);
+      let user = active.findIndex((el) => el.id === id);
+      active.splice(user, 1);
+      setCount((c) => c + 1);
+      alert("UserDeleted");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    setActive(active);
+  }, [count]);
+
   useEffect(() => {
     getData();
   }, []);
+
   let getData = async () => {
     try {
       let response = await axios.get("/student");
@@ -20,6 +39,7 @@ const Portal = () => {
       console.log(e);
     }
   };
+
   return spinner ? (
     <div>
       <div class="d-flex justify-content-center">
@@ -32,7 +52,7 @@ const Portal = () => {
       <div className="container mt-5 m-auto">
         <div className="row">
           {active.map((el, i) => {
-            return <Card key={i} el={el} />;
+            return <Card key={i} el={el} userDelete={userDelete} />;
           })}
         </div>
       </div>

@@ -16,30 +16,35 @@ const CreateStudent = () => {
     },
     validate: (values) => {
       let errors = {};
-      if (values.student === "") {
-        errors.student = "Please enter a name";
+      for (let key in values) {
+        if (values[key] === "") {
+          errors[key] = `please enter a ${key}`;
+        }
       }
-      if (values.avatar === "") {
-        errors.avatar = "Please give a avatar ";
-      }
-      if (values.Emailid === "") {
-        errors.Emailid = "Please give a email id";
-      }
-      if (values.Tamil === "") {
-        errors.Tamil = "please enter a mark";
-      }
-      if (values.English === "") {
-        errors.English = "please enter a mark";
-      }
-      if (values.Science === "") {
-        errors.Science = "please enter a mark";
-      }
-      if (values.Maths === "") {
-        errors.Maths = "please enter a mark";
-      }
-      if (values.Social === "") {
-        errors.Social = "please enter a mark";
-      }
+      // if (values.student === "") {
+      //   errors.student = "Please enter a name";
+      // }
+      // if (values.avatar === "") {
+      //   errors.avatar = "Please give a avatar ";
+      // }
+      // if (values.Emailid === "") {
+      //   errors.Emailid = "Please give a email id";
+      // }
+      // if (values.Tamil === "") {
+      //   errors.Tamil = "please enter a mark";
+      // }
+      // if (values.English === "") {
+      //   errors.English = "please enter a mark";
+      // }
+      // if (values.Science === "") {
+      //   errors.Science = "please enter a mark";
+      // }
+      // if (values.Maths === "") {
+      //   errors.Maths = "please enter a mark";
+      // }
+      // if (values.Social === "") {
+      //   errors.Social = "please enter a mark";
+      // }
 
       return errors;
     },

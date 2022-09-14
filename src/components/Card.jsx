@@ -2,17 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "../api";
 import { Link, useNavigate } from "react-router-dom";
 
-const Card = ({ el }) => {
-  const navigate = useNavigate();
-  let userDelete = async (id, el) => {
-    try {
-      await axios.delete(`/student/${id}`);
-      alert("UserDeleted");
-      navigate("/");
-    } catch (err) {
-      console.log(err);
-    }
-  };
+const Card = ({ el, userDelete }) => {
   return (
     <div className="card mx-auto mt-3 mb-3 col-md-3" style={{ width: "20rem" }}>
       <img
@@ -29,7 +19,7 @@ const Card = ({ el }) => {
             VIEW DETAILS
           </Link>
           <button
-            onClick={() => userDelete(el.id, el)}
+            onClick={() => userDelete(el.id)}
             className="btn btn-dark btn-sm mx-3 mb-3"
           >
             DELETE
